@@ -1,0 +1,200 @@
+/* Events Page Specific Styles */
+
+/* Event Calendar */
+.calendar-container {
+    background-color: var(--background-color);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.calendar-nav {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.calendar-nav button {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.calendar-nav button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.calendar-day {
+    background-color: var(--background-color);
+    padding: var(--spacing-md);
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color var(--transition-fast);
+}
+
+.calendar-day:hover {
+    background-color: var(--surface-color);
+}
+
+.calendar-day.has-event {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calendar-day.has-event:hover {
+    background-color: var(--secondary-color);
+}
+
+.calendar-day-header {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.calendar-day-number {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+}
+
+/* Event Cards */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.event-card {
+    background-color: var(--background-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px var(--shadow-hover);
+}
+
+.event-image {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--font-size-2xl);
+}
+
+.event-content {
+    padding: var(--spacing-xl);
+}
+
+.event-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.event-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.event-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.event-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* Events Page Layout */
+.events-intro {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.events-intro p {
+    max-width: 700px;
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+}
+
+/* Responsive Design for Events */
+@media (max-width: 768px) {
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: var(--font-size-sm);
+    }
+    
+    .calendar-day {
+        padding: var(--spacing-sm);
+        min-height: 60px;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-meta {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: var(--font-size-xs);
+    }
+    
+    .calendar-day {
+        padding: var(--spacing-xs);
+        min-height: 50px;
+    }
+    
+    .calendar-day-number {
+        font-size: var(--font-size-base);
+    }
+    
+    .event-image {
+        height: 150px;
+        font-size: var(--font-size-xl);
+    }
+} 

@@ -1,0 +1,164 @@
+/* 404 Page Specific Styles */
+
+/* 404 Page Layout */
+.error-container {
+    text-align: center;
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-animation {
+    width: 300px;
+    height: 300px;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.error-code {
+    font-size: var(--font-size-5xl);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+.error-message {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-2xl);
+    max-width: 500px;
+}
+
+.error-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Animated SVG Styles */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.error-animation svg {
+    animation: float 3s ease-in-out infinite;
+}
+
+.error-animation circle {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.error-animation path {
+    animation: rotate 4s linear infinite;
+}
+
+.error-animation text {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* 404 Page Content */
+.error-description {
+    color: var(--text-muted);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+}
+
+.error-suggestions {
+    background-color: var(--surface-color);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-xl);
+    max-width: 500px;
+}
+
+.error-suggestions h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.error-suggestions ul {
+    list-style: none;
+    text-align: left;
+}
+
+.error-suggestions li {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.error-suggestions li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: var(--spacing-sm);
+}
+
+/* Responsive Design for 404 */
+@media (max-width: 768px) {
+    .error-animation {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .error-code {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .error-message {
+        font-size: var(--font-size-lg);
+    }
+    
+    .error-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .error-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-container {
+        padding: var(--spacing-2xl) var(--spacing-md);
+    }
+    
+    .error-animation {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .error-code {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .error-message {
+        font-size: var(--font-size-base);
+    }
+    
+    .error-suggestions {
+        padding: var(--spacing-lg);
+    }
+} 
