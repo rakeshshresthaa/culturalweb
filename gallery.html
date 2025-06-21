@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Our Organization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">OrgName</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Our Gallery</h1>
+            <p class="hero-subtitle">Explore our collection of photos and videos showcasing our community events, cultural celebrations, and memorable moments.</p>
+            <div class="hero-buttons">
+                <a href="#photos" class="btn btn-primary">View Photos</a>
+                <a href="#videos" class="btn btn-secondary">Watch Videos</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-placeholder">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none">
+                    <rect width="400" height="300" fill="var(--accent-color)" opacity="0.1"/>
+                    <rect x="50" y="50" width="120" height="80" fill="var(--primary-color)" opacity="0.3"/>
+                    <rect x="180" y="70" width="120" height="80" fill="var(--secondary-color)" opacity="0.3"/>
+                    <rect x="110" y="150" width="120" height="80" fill="var(--accent-color)" opacity="0.3"/>
+                    <circle cx="200" cy="250" r="20" fill="var(--primary-color)" opacity="0.5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="events">Events</button>
+                    <button class="filter-btn" data-filter="community">Community</button>
+                    <button class="filter-btn" data-filter="culture">Culture</button>
+                    <button class="filter-btn" data-filter="workshops">Workshops</button>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section id="photos" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Photo Gallery</h2>
+            <p class="section-subtitle">Capturing the spirit and energy of our community through beautiful photography.</p>
+            
+            <div class="gallery-grid" id="photo-gallery">
+                <!-- Photo Item 1 -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="Community Event Celebration" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Community Celebration</h3>
+                                <p>Annual cultural festival 2024</p>
+                                <span class="gallery-category">Events</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 2 -->
+                <div class="gallery-item" data-category="community">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop" alt="Team Building Workshop" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Team Building</h3>
+                                <p>Monthly community workshop</p>
+                                <span class="gallery-category">Community</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 3 -->
+                <div class="gallery-item" data-category="culture">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop" alt="Cultural Performance" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Cultural Performance</h3>
+                                <p>Traditional dance showcase</p>
+                                <span class="gallery-category">Culture</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 4 -->
+                <div class="gallery-item" data-category="workshops">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop" alt="Art Workshop" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Art Workshop</h3>
+                                <p>Creative expression session</p>
+                                <span class="gallery-category">Workshops</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 5 -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&h=300&fit=crop" alt="Annual Meeting" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Annual Meeting</h3>
+                                <p>Community planning session</p>
+                                <span class="gallery-category">Events</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 6 -->
+                <div class="gallery-item" data-category="community">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Volunteer Day" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Volunteer Day</h3>
+                                <p>Community service initiative</p>
+                                <span class="gallery-category">Community</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 7 -->
+                <div class="gallery-item" data-category="culture">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=400&h=300&fit=crop" alt="Cultural Exhibition" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Cultural Exhibition</h3>
+                                <p>Heritage showcase event</p>
+                                <span class="gallery-category">Culture</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Item 8 -->
+                <div class="gallery-item" data-category="workshops">
+                    <div class="gallery-item-inner">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" alt="Cooking Workshop" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Cooking Workshop</h3>
+                                <p>Traditional cuisine class</p>
+                                <span class="gallery-category">Workshops</span>
+                            </div>
+                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Video Gallery</h2>
+            <p class="section-subtitle">Watch highlights from our events, interviews, and community stories.</p>
+            
+            <div class="video-grid" id="video-gallery">
+                <!-- Video Item 1 -->
+                <div class="video-item" data-category="events">
+                    <div class="video-item-inner">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=225&fit=crop" alt="Community Event Video" loading="lazy">
+                            <div class="video-overlay">
+                                <button class="video-play" data-video-id="dQw4w9WgXcQ">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5,3 19,12 5,21"></polygon>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Community Celebration Highlights</h3>
+                            <p>Watch the best moments from our annual cultural festival</p>
+                            <span class="video-category">Events</span>
+                            <span class="video-duration">3:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="video-item" data-category="community">
+                    <div class="video-item-inner">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=225&fit=crop" alt="Team Building Video" loading="lazy">
+                            <div class="video-overlay">
+                                <button class="video-play" data-video-id="9bZkp7q19f0">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5,3 19,12 5,21"></polygon>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Team Building Workshop</h3>
+                            <p>Behind the scenes of our monthly community workshop</p>
+                            <span class="video-category">Community</span>
+                            <span class="video-duration">5:20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="video-item" data-category="culture">
+                    <div class="video-item-inner">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=225&fit=crop" alt="Cultural Performance Video" loading="lazy">
+                            <div class="video-overlay">
+                                <button class="video-play" data-video-id="kJQP7kiw5Fk">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5,3 19,12 5,21"></polygon>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Traditional Dance Performance</h3>
+                            <p>Full performance from our cultural showcase event</p>
+                            <span class="video-category">Culture</span>
+                            <span class="video-duration">8:15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="video-item" data-category="workshops">
+                    <div class="video-item-inner">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=225&fit=crop" alt="Art Workshop Video" loading="lazy">
+                            <div class="video-overlay">
+                                <button class="video-play" data-video-id="ZZ5LpwO-An4">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5,3 19,12 5,21"></polygon>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Art Workshop Tutorial</h3>
+                            <p>Step-by-step guide from our creative expression session</p>
+                            <span class="video-category">Workshops</span>
+                            <span class="video-duration">12:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="lightbox-media">
+                <img id="lightbox-image" src="" alt="">
+                <div id="lightbox-video-container"></div>
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="video-modal-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="video-container">
+                <iframe id="video-iframe" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Our Organization</h3>
+                    <p>Building communities and fostering connections since 2020.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="legal.html">Privacy Policy</a></li>
+                        <li><a href="legal.html">Terms of Service</a></li>
+                        <li><a href="legal.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Our Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html> 
