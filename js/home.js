@@ -571,4 +571,147 @@ window.homeModule = {
     setupFeaturedContent,
     setupScrollEffects,
     setupQuickActions
-}; 
+};
+
+// Nepali Hero Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const devanagariGreeting = document.getElementById('devanagari-greeting');
+    const ctaButton = document.getElementById('cta-button');
+    const paperPlane = document.getElementById('paper-plane');
+    const particlesContainer = document.getElementById('particles');
+    
+    // Check if elements exist (for pages without Nepali hero)
+    if (!devanagariGreeting || !ctaButton || !paperPlane || !particlesContainer) {
+        return;
+    }
+    
+    // Initialize Howler.js for sound
+    const singingBowl = new Howl({
+        src: ['data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT'],
+        volume: 0.3,
+        preload: true
+    });
+
+    // GSAP Animation for Devanagari text
+    gsap.set(devanagariGreeting, { opacity: 0, y: 50 });
+    gsap.to(devanagariGreeting, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out"
+    });
+
+    // Particle effect on hover
+    devanagariGreeting.addEventListener('mouseenter', function() {
+        singingBowl.play();
+        createParticles();
+    });
+
+    // Morph animation on scroll
+    let isMorphed = false;
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100 && !isMorphed) {
+            morphToEnglish();
+            isMorphed = true;
+        } else if (window.scrollY <= 100 && isMorphed) {
+            morphToDevanagari();
+            isMorphed = false;
+        }
+    });
+
+    // CTA Button click animation
+    ctaButton.addEventListener('click', function() {
+        singingBowl.play();
+        animatePaperPlane();
+    });
+
+    function createParticles() {
+        const rect = devanagariGreeting.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = centerX + 'px';
+            particle.style.top = centerY + 'px';
+            particlesContainer.appendChild(particle);
+
+            anime({
+                targets: particle,
+                translateX: anime.random(-100, 100),
+                translateY: anime.random(-100, 100),
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+                duration: 1000,
+                easing: 'easeOutExpo',
+                complete: function() {
+                    particle.remove();
+                }
+            });
+        }
+    }
+
+    function morphToEnglish() {
+        gsap.to(devanagariGreeting, {
+            duration: 0.6,
+            ease: "power2.inOut",
+            onUpdate: function() {
+                const progress = this.progress();
+                if (progress < 0.5) {
+                    devanagariGreeting.textContent = 'नमस्ते';
+                } else {
+                    devanagariGreeting.textContent = 'Namaste';
+                    devanagariGreeting.classList.add('morphed');
+                }
+            }
+        });
+    }
+
+    function morphToDevanagari() {
+        gsap.to(devanagariGreeting, {
+            duration: 0.6,
+            ease: "power2.inOut",
+            onUpdate: function() {
+                const progress = this.progress();
+                if (progress < 0.5) {
+                    devanagariGreeting.textContent = 'Namaste';
+                } else {
+                    devanagariGreeting.textContent = 'नमस्ते';
+                    devanagariGreeting.classList.remove('morphed');
+                }
+            }
+        });
+    }
+
+    function animatePaperPlane() {
+        const rect = ctaButton.getBoundingClientRect();
+        const startX = rect.left + rect.width / 2;
+        const startY = rect.top + rect.height / 2;
+        const endX = window.innerWidth - 100;
+        const endY = window.innerHeight - 200;
+
+        paperPlane.style.left = startX + 'px';
+        paperPlane.style.top = startY + 'px';
+        paperPlane.style.opacity = '1';
+
+        gsap.to(paperPlane, {
+            x: endX - startX,
+            y: endY - startY,
+            rotation: 360,
+            duration: 2,
+            ease: "power2.inOut",
+            onComplete: function() {
+                paperPlane.style.opacity = '0';
+            }
+        });
+    }
+
+    // Mobile touch support
+    if ('ontouchstart' in window) {
+        devanagariGreeting.addEventListener('touchstart', function() {
+            singingBowl.play();
+            createParticles();
+        });
+    }
+}); 

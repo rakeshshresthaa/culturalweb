@@ -148,4 +148,199 @@
     .section-title {
         font-size: var(--font-size-2xl);
     }
+}
+
+/* Nepali Hero Section Styles */
+.nepali-hero {
+    background: #F8F5F0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.nepali-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 20, 60, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.nepali-hero .hero-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.devanagari-greeting {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    user-select: none;
+}
+
+.devanagari-greeting:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.devanagari-greeting.morphed {
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: #DC143C;
+}
+
+.nepali-hero .hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: #5D4037;
+    margin-bottom: 3rem;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+.cta-button {
+    background: #DC143C;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
+    background: #B71C1C;
+}
+
+.mandala-icon {
+    width: 24px;
+    height: 24px;
+    animation: rotate 4s linear infinite;
+}
+
+.paper-plane {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #FFD700;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, rgba(44, 24, 16, 0.1) 0%, transparent 100%);
+    clip-path: polygon(0 100%, 20% 60%, 40% 80%, 60% 40%, 80% 70%, 100% 50%, 100% 100%);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nepali-hero {
+        padding: 1rem;
+    }
+    
+    .nepali-hero .hero-content {
+        padding: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .devanagari-greeting,
+    .cta-button,
+    .mandala-icon {
+        animation: none;
+        transition: none;
+    }
 } 
