@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     initMembershipPage();
+    setupMembershipPopups();
 });
 
 function initMembershipPage() {
@@ -184,40 +185,26 @@ function validateMembershipForm() {
 function submitMembershipForm(form) {
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
-    
-    // Show loading state
     submitBtn.disabled = true;
     submitBtn.textContent = 'Processing...';
-    
-    // Collect form data
-    const formData = new FormData(form);
-    const membershipData = {
-        fullName: formData.get('fullName'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        tier: formData.get('tier'),
-        message: formData.get('message'),
-        newsletter: formData.get('newsletter') === 'on',
-        terms: formData.get('terms') === 'on'
-    };
-    
-    // Simulate form submission
+
+    // Simulate async (replace with real AJAX if needed)
     setTimeout(() => {
-        showNotification('Welcome to our community! Your membership application has been submitted successfully.', 'success');
-        
-        // Reset form
-        form.reset();
-        
-        // Reset button
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-        
-        // Track successful membership
-        trackMembershipSignup(membershipData);
-        
-        // Show welcome modal
-        showWelcomeModal(membershipData);
-    }, 2000);
+        // Close form modal
+        const formModalOverlay = document.getElementById('form-modal-overlay');
+        if (formModalOverlay) {
+            formModalOverlay.classList.remove('active');
+        }
+        // Show join confirmation modal
+        const joinModalOverlay = document.getElementById('join-modal-overlay');
+        if (joinModalOverlay) {
+            joinModalOverlay.classList.add('active');
+        }
+        // Optionally reset form
+        form.reset();
+    }, 1200);
 }
 
 function setupFormAutoSave() {
@@ -505,6 +492,98 @@ function trackMembershipSignup(membershipData) {
     }
 }
 
+// --- Modal Popup Logic for Membership Page ---
+
+function setupMembershipPopups() {
+    // Plan Modal Elements
+    const planModalOverlay = document.getElementById('plan-modal-overlay');
+    const planModalTitle = document.getElementById('plan-modal-title');
+    const planModalSummary = document.getElementById('plan-modal-summary');
+    const closePlanModalBtn = document.getElementById('close-plan-modal');
+    const continueToJoinBtn = document.getElementById('continue-to-join');
+
+    // Join Modal Elements
+    const joinModalOverlay = document.getElementById('join-modal-overlay');
+    const closeJoinModalBtn = document.getElementById('close-join-modal');
+    const closeJoinModalBtn2 = document.getElementById('close-join-modal-btn');
+
+    // Plan data for modal
+    const planData = {
+        'Basic': {
+            price: '$25/month',
+            description: 'Perfect for individuals getting started. Includes: Access to monthly events, Community newsletter, Member directory access, Online community forum.'
+        },
+        'Premium': {
+            price: '$50/month',
+            description: 'Best value for active community members. Includes everything in Basic, plus: Priority event registration, Exclusive workshops & seminars, Networking events, Member discounts (20%), Quarterly member meetups.'
+        },
+        'Enterprise': {
+            price: '$100/month',
+            description: 'For organizations and power users. Includes everything in Premium, plus: Custom event planning, Dedicated support, Brand visibility opportunities, Advisory board access, Custom member discounts (30%).'
+        }
+    };
+
+    // Show Form Modal on plan button click
+    document.querySelectorAll('.tier-action button').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Set the select value in the form
+            const card = this.closest('.tier-card');
+            const plan = card.querySelector('h3').textContent.trim();
+            const tierSelect = document.getElementById('membership-tier');
+            if (tierSelect) {
+                tierSelect.value = getTierValue(plan);
+            }
+            // Show form modal
+            const formModalOverlay = document.getElementById('form-modal-overlay');
+            if (formModalOverlay) {
+                formModalOverlay.classList.add('active');
+            }
+        });
+    });
+
+    // Close Form Modal
+    const closeFormModalBtn = document.getElementById('close-form-modal');
+    const formModalOverlay = document.getElementById('form-modal-overlay');
+    if (closeFormModalBtn && formModalOverlay) {
+        closeFormModalBtn.addEventListener('click', function() {
+            formModalOverlay.classList.remove('active');
+        });
+        formModalOverlay.addEventListener('click', function(e) {
+            if (e.target === formModalOverlay) formModalOverlay.classList.remove('active');
+        });
+    }
+
+    // Close Plan Modal
+    closePlanModalBtn.addEventListener('click', function() {
+        planModalOverlay.classList.remove('active');
+    });
+    planModalOverlay.addEventListener('click', function(e) {
+        if (e.target === planModalOverlay) planModalOverlay.classList.remove('active');
+    });
+
+    // Continue to Join: close modal and scroll to form
+    continueToJoinBtn.addEventListener('click', function() {
+        planModalOverlay.classList.remove('active');
+        const form = document.getElementById('membership-form');
+        if (form) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            form.classList.add('highlight');
+            setTimeout(() => form.classList.remove('highlight'), 2000);
+        }
+    });
+
+    // Close Join Modal
+    [closeJoinModalBtn, closeJoinModalBtn2].forEach(btn => {
+        btn.addEventListener('click', function() {
+            joinModalOverlay.classList.remove('active');
+        });
+    });
+    joinModalOverlay.addEventListener('click', function(e) {
+        if (e.target === joinModalOverlay) joinModalOverlay.classList.remove('active');
+    });
+}
+
 // Export functions for use in other scripts
 window.membershipModule = {
     setupMembershipTiers,
@@ -515,4 +594,27 @@ window.membershipModule = {
     setupMembershipCalculator,
     setupTestimonials,
     setupProgressTracker
-}; 
+};
+
+// Utility: manage body scroll lock when modal is open
+function updateBodyModalOpen() {
+    const anyModalOpen = document.querySelector('.modal-overlay.active');
+    if (anyModalOpen) {
+        document.body.classList.add('modal-open');
+    } else {
+        document.body.classList.remove('modal-open');
+    }
+}
+
+// Patch all modal open/close actions to update scroll lock
+function patchModalScrollLock(modalOverlay) {
+    if (!modalOverlay) return;
+    const observer = new MutationObserver(updateBodyModalOpen);
+    observer.observe(modalOverlay, { attributes: true, attributeFilter: ['class'] });
+}
+// Patch all overlays
+['form-modal-overlay', 'plan-modal-overlay', 'join-modal-overlay'].forEach(id => {
+    patchModalScrollLock(document.getElementById(id));
+});
+// Also update on DOMContentLoaded in case modal is open by default
+updateBodyModalOpen(); 

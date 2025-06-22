@@ -9,6 +9,129 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: var(--surface-color);
+            border-radius: 10px;
+            max-width: 1000px;
+            width: 99%;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 8px 32px var(--shadow-color, rgba(0,0,0,0.2));
+            text-align: center;
+            position: relative;
+            color: var(--text-primary);
+        }
+        .modal .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .modal-plan-summary {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        .modal input,
+        .modal textarea,
+        .modal select {
+            background: var(--background-color);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        .modal label {
+            color: var(--text-primary);
+        }
+        .modal-btn,
+        .modal-btn.secondary,
+        .btn.btn-primary,
+        .btn.btn-secondary {
+            color: #fff;
+        }
+        .modal a {
+            color: var(--primary-color);
+        }
+        .modal-flex {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+            justify-content: center;
+        }
+        .modal-left {
+            flex: 1.5 1 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-width: 220px;
+            max-width: 450px;
+        }
+        .modal-right {
+            flex: 2 1 550px;
+            padding-left: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            width: 100%;
+        }
+        #membership-form {
+            width: 100%;
+        }
+        .modal-right .form-group,
+        .modal-right input,
+        .modal-right select,
+        .modal-right textarea,
+        .modal-right button {
+            width: 100%;
+            text-align: left;
+        }
+        @media (max-width: 700px) {
+            .modal-flex {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .modal-left {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-right: 0;
+                padding-bottom: 1rem;
+                max-width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+            .modal-right {
+                padding-left: 0;
+            }
+        }
+        body.modal-open {
+            overflow: hidden !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -316,80 +439,7 @@
     </section>
 
     <!-- Sign Up Section -->
-    <section class="signup-section">
-        <div class="container">
-            <div class="signup-content">
-                <div class="signup-text">
-                    <h2>Ready to Join?</h2>
-                    <p>Take the first step towards becoming part of our amazing community. Fill out the form below and we'll get you started right away.</p>
-                    <div class="signup-features">
-                        <div class="feature">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20,6 9,17 4,12"></polyline>
-                            </svg>
-                            <span>No setup fees</span>
-                        </div>
-                        <div class="feature">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20,6 9,17 4,12"></polyline>
-                            </svg>
-                            <span>Cancel anytime</span>
-                        </div>
-                        <div class="feature">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20,6 9,17 4,12"></polyline>
-                            </svg>
-                            <span>Instant access</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="signup-form">
-                    <form id="membership-form">
-                        <div class="form-group">
-                            <label for="full-name">Full Name</label>
-                            <input type="text" id="full-name" name="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="membership-tier">Membership Tier</label>
-                            <select id="membership-tier" name="tier" required>
-                                <option value="">Select a tier</option>
-                                <option value="basic">Basic - $25/month</option>
-                                <option value="premium">Premium - $50/month</option>
-                                <option value="enterprise">Enterprise - $100/month</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Additional Information</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your interests or any questions you have..."></textarea>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="newsletter" id="newsletter">
-                                <span class="checkmark"></span>
-                                Subscribe to our newsletter for updates and exclusive content
-                            </label>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="terms" id="terms" required>
-                                <span class="checkmark"></span>
-                                I agree to the <a href="legal.html">Terms of Service</a> and <a href="legal.html">Privacy Policy</a>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Join Now</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Removed the inline signup-section. The form will be in a modal below. -->
 
     <!-- FAQ Section -->
     <section class="faq-section">
@@ -448,6 +498,82 @@
             </div>
         </div>
     </footer>
+
+    <!-- Membership Plan Popup Modal -->
+    <div class="modal-overlay" id="plan-modal-overlay">
+        <div class="modal" id="plan-modal">
+            <button class="close-btn" id="close-plan-modal">&times;</button>
+            <div class="modal-title" id="plan-modal-title">Membership Plan</div>
+            <div class="modal-plan-summary" id="plan-modal-summary"></div>
+            <button class="modal-btn" id="continue-to-join">Continue to Join</button>
+        </div>
+    </div>
+    <!-- Ready to Join Confirmation Modal -->
+    <div class="modal-overlay" id="join-modal-overlay">
+        <div class="modal" id="join-modal">
+            <button class="close-btn" id="close-join-modal">&times;</button>
+            <div class="modal-title">Thank You for Joining!</div>
+            <div class="modal-plan-summary">We have received your membership request. Our team will contact you soon!</div>
+            <button class="modal-btn secondary" id="close-join-modal-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Membership Form Popup Modal -->
+    <div class="modal-overlay" id="form-modal-overlay">
+        <div class="modal" id="form-modal">
+            <button class="close-btn" id="close-form-modal">&times;</button>
+            <div class="modal-flex">
+                <div class="modal-left">
+                    <div class="modal-title">Ready to Join?</div>
+                    <div class="modal-plan-summary">Take the first step towards becoming part of our amazing community. Fill out the form below and we'll get you started right away.</div>
+                </div>
+                <div class="modal-right">
+                    <form id="membership-form">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="membership-tier">Membership Tier</label>
+                            <select id="membership-tier" name="tier" required>
+                                <option value="">Select a tier</option>
+                                <option value="basic">Basic - $25/month</option>
+                                <option value="premium">Premium - $50/month</option>
+                                <option value="enterprise">Enterprise - $100/month</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your interests or any questions you have..."></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" id="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for updates and exclusive content
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" id="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="legal.html">Terms of Service</a> and <a href="legal.html">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Join Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
     <script src="js/membership.js"></script>
