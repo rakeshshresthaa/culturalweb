@@ -79,10 +79,12 @@
             <div class="filter-controls">
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="events">Events</button>
-                    <button class="filter-btn" data-filter="community">Community</button>
-                    <button class="filter-btn" data-filter="culture">Culture</button>
-                    <button class="filter-btn" data-filter="workshops">Workshops</button>
+                    <button class="filter-btn" data-filter="photo">Photos</button>
+                    <button class="filter-btn" data-filter="video">Videos</button>
+                </div>
+                <div class="search-container">
+                    <input type="search" id="gallery-search" placeholder="Search by keyword...">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
                 </div>
                 <div class="view-toggle">
                     <button class="view-btn active" data-view="grid">
@@ -108,270 +110,80 @@
         </div>
     </section>
 
-    <!-- Photos Section -->
-    <section id="photos" class="gallery-section">
+    <!-- Gallery Section -->
+    <section class="gallery-section">
         <div class="container">
-            <h2 class="section-title">Photo Gallery</h2>
-            <p class="section-subtitle">Capturing the spirit and energy of our community through beautiful photography.</p>
-            
-            <div class="gallery-grid" id="photo-gallery">
-                <!-- Photo Item 1 -->
-                <div class="gallery-item" data-category="events">
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Item 1: Photo -->
+                <div class="gallery-item" data-category="photo">
                     <div class="gallery-item-inner">
                         <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="Community Event Celebration" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-info">
                                 <h3>Community Celebration</h3>
                                 <p>Annual cultural festival 2024</p>
-                                <span class="gallery-category">Events</span>
                             </div>
                             <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 9.5 21 3m0 0h-6m6 0v6M3 21l6.5-6.5M3 21v-6m0 6h6"/></svg>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Photo Item 2 -->
-                <div class="gallery-item" data-category="community">
+                <!-- Item 2: Video -->
+                <div class="gallery-item" data-category="video">
+                    <div class="gallery-item-inner">
+                        <video poster="https://images.unsplash.com/photo-1515923237332-956a24989667?w=400&h=300&fit=crop" muted loop playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-people-at-a-performance-4001-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Live Performance</h3>
+                                <p>Concert from the main stage</p>
+                            </div>
+                            <button class="gallery-expand" data-type="video" data-src="https://assets.mixkit.co/videos/preview/mixkit-people-at-a-performance-4001-large.mp4">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 12 7-5v10l-7-5Z"/><path d="M2 17a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 3: Photo -->
+                <div class="gallery-item" data-category="photo">
                     <div class="gallery-item-inner">
                         <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop" alt="Team Building Workshop" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-info">
                                 <h3>Team Building</h3>
                                 <p>Monthly community workshop</p>
-                                <span class="gallery-category">Community</span>
                             </div>
                             <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 9.5 21 3m0 0h-6m6 0v6M3 21l6.5-6.5M3 21v-6m0 6h6"/></svg>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Photo Item 3 -->
-                <div class="gallery-item" data-category="culture">
+                <!-- Item 4: Video -->
+                <div class="gallery-item" data-category="video">
                     <div class="gallery-item-inner">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop" alt="Cultural Performance" loading="lazy">
+                        <video poster="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" muted loop playsinline>
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-a-woman-in-a-business-meeting-42211-large.mp4" type="video/mp4">
+                        </video>
                         <div class="gallery-overlay">
                             <div class="gallery-info">
-                                <h3>Cultural Performance</h3>
-                                <p>Traditional dance showcase</p>
-                                <span class="gallery-category">Culture</span>
+                                <h3>Creative Workshop</h3>
+                                <p>Brainstorming session in progress</p>
                             </div>
-                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
+                            <button class="gallery-expand" data-type="video" data-src="https://assets.mixkit.co/videos/preview/mixkit-a-woman-in-a-business-meeting-42211-large.mp4">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 12 7-5v10l-7-5Z"/><path d="M2 17a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Photo Item 4 -->
-                <div class="gallery-item" data-category="workshops">
-                    <div class="gallery-item-inner">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop" alt="Art Workshop" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h3>Art Workshop</h3>
-                                <p>Creative expression session</p>
-                                <span class="gallery-category">Workshops</span>
-                            </div>
-                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Photo Item 5 -->
-                <div class="gallery-item" data-category="events">
-                    <div class="gallery-item-inner">
-                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&h=300&fit=crop" alt="Annual Meeting" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h3>Annual Meeting</h3>
-                                <p>Community planning session</p>
-                                <span class="gallery-category">Events</span>
-                            </div>
-                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Photo Item 6 -->
-                <div class="gallery-item" data-category="community">
-                    <div class="gallery-item-inner">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Volunteer Day" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h3>Volunteer Day</h3>
-                                <p>Community service initiative</p>
-                                <span class="gallery-category">Community</span>
-                            </div>
-                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Photo Item 7 -->
-                <div class="gallery-item" data-category="culture">
-                    <div class="gallery-item-inner">
-                        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=400&h=300&fit=crop" alt="Cultural Exhibition" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h3>Cultural Exhibition</h3>
-                                <p>Heritage showcase event</p>
-                                <span class="gallery-category">Culture</span>
-                            </div>
-                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Photo Item 8 -->
-                <div class="gallery-item" data-category="workshops">
-                    <div class="gallery-item-inner">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" alt="Cooking Workshop" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h3>Cooking Workshop</h3>
-                                <p>Traditional cuisine class</p>
-                                <span class="gallery-category">Workshops</span>
-                            </div>
-                            <button class="gallery-expand" data-type="photo" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.35-4.35"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Videos Section -->
-    <section id="videos" class="gallery-section">
-        <div class="container">
-            <h2 class="section-title">Video Gallery</h2>
-            <p class="section-subtitle">Watch highlights from our events, interviews, and community stories.</p>
-            
-            <div class="video-grid" id="video-gallery">
-                <!-- Video Item 1 -->
-                <div class="video-item" data-category="events">
-                    <div class="video-item-inner">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=225&fit=crop" alt="Community Event Video" loading="lazy">
-                            <div class="video-overlay">
-                                <button class="video-play" data-video-id="dQw4w9WgXcQ">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polygon points="5,3 19,12 5,21"></polygon>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h3>Community Celebration Highlights</h3>
-                            <p>Watch the best moments from our annual cultural festival</p>
-                            <span class="video-category">Events</span>
-                            <span class="video-duration">3:45</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video Item 2 -->
-                <div class="video-item" data-category="community">
-                    <div class="video-item-inner">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=225&fit=crop" alt="Team Building Video" loading="lazy">
-                            <div class="video-overlay">
-                                <button class="video-play" data-video-id="9bZkp7q19f0">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polygon points="5,3 19,12 5,21"></polygon>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h3>Team Building Workshop</h3>
-                            <p>Behind the scenes of our monthly community workshop</p>
-                            <span class="video-category">Community</span>
-                            <span class="video-duration">5:20</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video Item 3 -->
-                <div class="video-item" data-category="culture">
-                    <div class="video-item-inner">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=225&fit=crop" alt="Cultural Performance Video" loading="lazy">
-                            <div class="video-overlay">
-                                <button class="video-play" data-video-id="kJQP7kiw5Fk">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polygon points="5,3 19,12 5,21"></polygon>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h3>Traditional Dance Performance</h3>
-                            <p>Full performance from our cultural showcase event</p>
-                            <span class="video-category">Culture</span>
-                            <span class="video-duration">8:15</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video Item 4 -->
-                <div class="video-item" data-category="workshops">
-                    <div class="video-item-inner">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=225&fit=crop" alt="Art Workshop Video" loading="lazy">
-                            <div class="video-overlay">
-                                <button class="video-play" data-video-id="ZZ5LpwO-An4">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polygon points="5,3 19,12 5,21"></polygon>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h3>Art Workshop Tutorial</h3>
-                            <p>Step-by-step guide from our creative expression session</p>
-                            <span class="video-category">Workshops</span>
-                            <span class="video-duration">12:30</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- More items can be added here -->
+                
             </div>
         </div>
     </section>

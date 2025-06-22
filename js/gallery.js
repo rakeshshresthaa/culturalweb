@@ -1,8 +1,40 @@
 // Gallery Page JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize gallery functionality
-    initGallery();
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('gallery-search');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const executeFiltering = () => {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        const searchTerm = searchInput.value.toLowerCase().trim();
+
+        galleryItems.forEach(item => {
+            const itemCategory = item.dataset.category;
+            const itemText = item.querySelector('.gallery-info')?.textContent.toLowerCase() || '';
+
+            const categoryMatch = activeFilter === 'all' || itemCategory === activeFilter;
+            const searchMatch = itemText.includes(searchTerm);
+
+            if (categoryMatch && searchMatch) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    };
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            executeFiltering();
+        });
+    });
+
+    searchInput.addEventListener('input', executeFiltering);
+
+    // Any other gallery logic (like a lightbox) would go here
 });
 
 function initGallery() {
@@ -26,16 +58,25 @@ function initGallery() {
 
     // Filter functionality
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Update active filter button
+        button.addEventListener('click', () => {
+            // Set active class on button
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Filter gallery items
-            filterItems(galleryItems, filter);
-            filterItems(videoItems, filter);
+            button.classList.add('active');
+
+            const filter = button.dataset.filter;
+
+            galleryItems.forEach(item => {
+                item.classList.add('hidden'); // Hide all items initially
+                item.style.animation = 'none'; // Reset animation
+                
+                if (filter === 'all' || item.dataset.category === filter) {
+                    // Use a timeout to re-trigger the animation
+                    setTimeout(() => {
+                        item.classList.remove('hidden');
+                        item.style.animation = ''; // Let CSS handle animation
+                    }, 50);
+                }
+            });
         });
     });
 

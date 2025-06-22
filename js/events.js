@@ -456,4 +456,86 @@ window.eventsModule = {
     setupEventSearch,
     setupEventSharing,
     setupEventReminders
-}; 
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('event-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const learnMoreButtons = document.querySelectorAll('.event-learn-more');
+
+    // Function to open the modal and populate it with data
+    const openModal = (eventCard) => {
+        const title = eventCard.querySelector('.event-detail-title').textContent;
+        const imageSrc = eventCard.querySelector('.event-detail-image').src;
+        const meta = eventCard.querySelector('.event-detail-meta').innerHTML;
+        const description = eventCard.querySelector('.event-detail-description').textContent;
+
+        modal.querySelector('.modal-title').textContent = title;
+        modal.querySelector('.modal-image').src = imageSrc;
+        modal.querySelector('.modal-meta').innerHTML = meta;
+        modal.querySelector('.modal-description').textContent = description;
+
+        modal.style.display = 'block';
+    };
+
+    // Add click event to all "Learn More" buttons
+    learnMoreButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const eventCard = e.target.closest('.event-detail-card');
+            openModal(eventCard);
+        });
+    });
+
+    // Function to close the modal
+    const closeModal = () => {
+        modal.style.display = 'none';
+    };
+
+    // Close the modal when the close button is clicked
+    modalClose.addEventListener('click', closeModal);
+
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close the modal with the Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+
+    // Handle clicking on upcoming events to scroll to details
+    const upcomingEventItems = document.querySelectorAll('.upcoming-events-list .event-list-item');
+    upcomingEventItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            // Don't trigger scroll if clicking on the "options" (ellipsis)
+            if (e.target.closest('.event-item-options')) {
+                return;
+            }
+
+            const targetId = item.dataset.targetId;
+            if (targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    // Smoothly scroll to the target element
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    // Add a temporary highlight effect
+                    targetElement.style.transition = 'box-shadow 0.3s ease-in-out';
+                    targetElement.style.boxShadow = `0 0 25px ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color-faded')}`;
+                    
+                    setTimeout(() => {
+                        targetElement.style.boxShadow = '';
+                    }, 1500); // Highlight for 1.5 seconds
+                }
+            }
+        });
+    });
+}); 
