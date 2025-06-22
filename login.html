@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Our Organization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <a href="index.html" class="auth-close" onclick="history.back(); return false;">&times;</a>
+                <div class="auth-header">
+                    <a href="index.html" class="auth-logo">OrgName</a>
+                    <h1 class="auth-title">Welcome Back!</h1>
+                    <p class="auth-subtitle">Sign in to continue to your account.</p>
+                </div>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-options">
+                        <div class="form-check">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <a href="#" class="form-link">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary auth-btn">Sign In</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html" class="form-link">Sign up</a></p>
+                </div>
+            </div>
+            <div class="auth-art">
+                <img src="https://images.unsplash.com/photo-1529592383879-858593815456?auto=format&fit=crop&w=800&q=80" alt="Cultural event image">
+                <div class="art-overlay"></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

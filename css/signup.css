@@ -1,0 +1,7 @@
+@import url('login.css');
+
+/* 
+  The signup page uses the same styles as the login page.
+  This import keeps the design consistent without duplicating code.
+  Any signup-specific style overrides can be added below.
+*/ 

@@ -148,28 +148,36 @@
                 <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="faq.html" class="nav-link">FAQ</a>
+                <div class="nav-auth-mobile">
+                    <a href="login.html" class="btn btn-secondary">Sign In</a>
+                </div>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-controls">
+                <div class="nav-auth-desktop">
+                    <a href="login.html" class="btn btn-secondary">Sign In</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
-            <button class="theme-toggle" id="theme-toggle">
-                <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
         </div>
     </nav>
 
@@ -441,7 +449,30 @@
     <!-- Sign Up Section -->
     <!-- Removed the inline signup-section. The form will be in a modal below. -->
 
-    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Can I change my membership tier later?</h3>
+                    <p>Yes, you can upgrade or downgrade your membership tier at any time. Changes will take effect at the start of your next billing cycle.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I cancel my membership?</h3>
+                    <p>You can cancel your membership at any time through your account settings or by contacting our support team. No cancellation fees apply.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are there any hidden fees?</h3>
+                    <p>No hidden fees! The price you see is the price you pay. We're transparent about all costs associated with membership.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What payment methods do you accept?</h3>
+                    <p>We accept all major credit cards, PayPal, and bank transfers for annual memberships. All payments are processed securely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -555,4 +586,4 @@
     <script src="js/main.js"></script>
     <script src="js/membership.js"></script>
 </body>
-</html> 
+</html>

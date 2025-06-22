@@ -142,15 +142,16 @@ a:hover {
 }
 
 .btn-secondary {
-    background-color: transparent;
+    background-color: var(--surface-color);
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+    border-color: var(--primary-color);
 }
 
 /* Navigation */
@@ -207,7 +208,7 @@ a:hover {
     position: absolute;
     bottom: -2px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: scaleX(1);
     width: 20px;
     height: 2px;
     background-color: var(--primary-color);
@@ -402,6 +403,24 @@ a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-controls {
+        gap: var(--spacing-md);
+    }
+
+    .nav-auth-desktop {
+        display: none;
+    }
+
+    .nav-auth-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+        padding: var(--spacing-lg);
+        border-top: 1px solid var(--border-color);
+        width: 100%;
+    }
+
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -415,10 +434,16 @@ a:hover {
         padding-top: var(--spacing-2xl);
         transition: left var(--transition-normal);
         border-top: 1px solid var(--border-color);
+        padding: var(--spacing-xl) 0;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px var(--shadow-color);
+        width: 100%;
     }
 
     .nav-menu.active {
         left: 0;
+        align-items: stretch;
+        text-align: center;
     }
 
     .nav-toggle {
@@ -534,4 +559,20 @@ a:hover {
 .mt-2 { margin-top: var(--spacing-sm); }
 .mt-3 { margin-top: var(--spacing-md); }
 .mt-4 { margin-top: var(--spacing-lg); }
-.mt-5 { margin-top: var(--spacing-xl); } 
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.nav-auth-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-auth-mobile {
+    display: none;
+} 
