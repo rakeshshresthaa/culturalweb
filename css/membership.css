@@ -4,7 +4,7 @@
 .hero {
     padding-top: 120px;
     padding-bottom: var(--spacing-3xl);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: white(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     position: relative;
     overflow: hidden;
@@ -35,7 +35,6 @@
 }
 
 .hero-subtitle {
-    color: rgba(255, 255, 255, 0.9);
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-2xl);
     max-width: 600px;
